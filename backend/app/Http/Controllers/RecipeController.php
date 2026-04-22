@@ -7,9 +7,21 @@ use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+  
+
+
+    public function findRecipes(Request $request)
+    {
+        $ingredients = $request->ingredients;
+
+        $recipes = Recipe::whereHas('ingredients', function ($query) use ($ingredients) {
+            $query->whereIn('name', $ingredients);
+        })->get();
+
+        return response()->json($recipes);
+    }
+
+
     public function index()
     {
         //

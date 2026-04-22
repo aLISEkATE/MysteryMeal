@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ingredients;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 
-class IngredientsController extends Controller
+class GameController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
         //
@@ -34,7 +32,7 @@ class IngredientsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ingredients $ingredients)
+    public function show(Recipe $recipe)
     {
         //
     }
@@ -42,7 +40,7 @@ class IngredientsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ingredients $ingredients)
+    public function edit(Recipe $recipe)
     {
         //
     }
@@ -50,7 +48,7 @@ class IngredientsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ingredients $ingredients)
+    public function update(Request $request, Recipe $recipe)
     {
         //
     }
@@ -58,7 +56,7 @@ class IngredientsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ingredients $ingredients)
+    public function destroy(Recipe $recipe)
     {
         //
     }

@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('highscores', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('creator_id');
+            $table->integer('score');
+            
             $table->timestamps();
         });
     }
