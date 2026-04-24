@@ -1,0 +1,808 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use App\Models\Meal;
+
+class MealSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+
+
+    /**
+     * Convert "100ml", "2 tbs", "1 cup", "Pinch" → integer
+     */
+
+
+    public function run(): void
+    {
+        $meals = [
+            [
+                'idMeal' => '53133',
+                'strMeal' => 'Asado',
+                'strMealAlternate' => null,
+                'strCategory' => 'Beef',
+                'strArea' => 'Argentinian',
+                'strInstructions' => 'Prepare the Fire: Start a wood fire in your grill and let it burn down to coals.
+Season the Meat: Generously salt the beef cuts.
+Grill the Meat: Place the beef on the grill, starting with the thickest cuts farthest from the coals. Add chorizo and morcilla after the beef has been cooking for a while.
+Cook to Perfection: Cook the meat, turning occasionally, until it reaches your desired doneness. Typically, ribs may take up to 2 hours; thinner cuts will cook faster.
+Rest and Serve: Let the meat rest for about 10 minutes before slicing. Serve with chimichurri sauce and grilled vegetables.
+Pro Tips:
+
+Use a mix of wood and charcoal for a consistent heat source. Wood adds flavor, while charcoal maintains temperature.
+Season the meat just before grilling to ensure it retains its moisture and flavor.
+Serving Suggestions:
+
+Serve with a side of chimichurri sauce, a fresh tomato salad, and crusty bread. Pair with a robust Malbec wine to complement the rich flavors of the meat.',
+                'strMealThumb' => 'https://www.themealdb.com/images/media/meals/kgfh3q1763075438.jpg',
+                'strTags' => null,
+                'strYoutube' => 'https://www.youtube.com/watch?v=q5f6Z6i1hQ8',
+                'strIngredient1' => 'Mixed Beef Cuts',
+                'strIngredient2' => 'Chorizo',
+                'strIngredient3' => 'Morcilla',
+                'strIngredient4' => 'Salt',
+                'strIngredient5' => '',
+                'strIngredient6' => '',
+                'strIngredient7' => '',
+                'strIngredient8' => '',
+                'strIngredient9' => '',
+                'strIngredient10' => '',
+                'strIngredient11' => '',
+                'strIngredient12' => '',
+                'strIngredient13' => '',
+                'strIngredient14' => '',
+                'strIngredient15' => '',
+                'strIngredient16' => '',
+                'strIngredient17' => '',
+                'strIngredient18' => '',
+                'strIngredient19' => '',
+                'strIngredient20' => '',
+                'strMeasure1' => '2kg',
+                'strMeasure2' => '4',
+                'strMeasure3' => '2',
+                'strMeasure4' => 'To taste',
+                'strMeasure5' => ' ',
+                'strMeasure6' => ' ',
+                'strMeasure7' => ' ',
+                'strMeasure8' => ' ',
+                'strMeasure9' => ' ',
+                'strMeasure10' => ' ',
+                'strMeasure11' => ' ',
+                'strMeasure12' => ' ',
+                'strMeasure13' => ' ',
+                'strMeasure14' => ' ',
+                'strMeasure15' => ' ',
+                'strMeasure16' => ' ',
+                'strMeasure17' => ' ',
+                'strMeasure18' => ' ',
+                'strMeasure19' => ' ',
+                'strMeasure20' => ' ',
+                'strSource' => 'https://www.munchery.com/blog/the-ten-iconic-dishes-of-argentina-and-how-to-cook-them-at-home/',
+                'strImageSource' => null,
+                'strCreativeCommonsConfirmed' => null,
+                'dateModified' => '2025-11-13 10:45:01',
+            ],
+            [
+                'idMeal' => '53220',
+                'strMeal' => 'kabse',
+                'strMealAlternate' => null,
+                'strCategory' => 'Chicken',
+                'strArea' => 'Saudi Arabian',
+                'strInstructions' => '1
+Caramelize the chicken with olive oil then add a maggi cube and boil it for around 30 minutes.
+2
+In another pot, add all the veggies and caramelize them till they are soft.
+3
+Once everything is done, add the rice, raisins & spices to the veggies and add 2 and a half cups of water for the rice to cook.
+4
+Once the rice is done put everything in the oven.',
+                'strMealThumb' => 'https://www.themealdb.com/images/media/meals/utqnjv1763598650.jpg',
+                'strTags' => null,
+                'strYoutube' => 'https://www.youtube.com/watch?v=lrcUixJEPK0',
+                'strIngredient1' => 'Chicken',
+                'strIngredient2' => 'Rice',
+                'strIngredient3' => 'Green Pepper',
+                'strIngredient4' => 'Red Pepper',
+                'strIngredient5' => 'Mushrooms',
+                'strIngredient6' => 'Sweetcorn',
+                'strIngredient7' => 'Carrots',
+                'strIngredient8' => 'Raisins',
+                'strIngredient9' => 'Turmeric',
+                'strIngredient10' => 'Kabse Spice',
+                'strIngredient11' => 'Salt',
+                'strIngredient12' => 'Black Pepper',
+                'strIngredient13' => '',
+                'strIngredient14' => '',
+                'strIngredient15' => '',
+                'strIngredient16' => '',
+                'strIngredient17' => '',
+                'strIngredient18' => '',
+                'strIngredient19' => '',
+                'strIngredient20' => '',
+                'strMeasure1' => '400g',
+                'strMeasure2' => '1 cup',
+                'strMeasure3' => '1',
+                'strMeasure4' => '1',
+                'strMeasure5' => '2',
+                'strMeasure6' => '1',
+                'strMeasure7' => '2',
+                'strMeasure8' => 'Handful',
+                'strMeasure9' => '1 tsp',
+                'strMeasure10' => '1 tsp',
+                'strMeasure11' => 'Pinch',
+                'strMeasure12' => 'Pinch',
+                'strMeasure13' => ' ',
+                'strMeasure14' => ' ',
+                'strMeasure15' => ' ',
+                'strMeasure16' => ' ',
+                'strMeasure17' => ' ',
+                'strMeasure18' => ' ',
+                'strMeasure19' => ' ',
+                'strMeasure20' => ' ',
+                'strSource' => 'https://cookpad.com/eng/recipes/17108731?ref=search&search_term=saudi+arabia',
+                'strImageSource' => null,
+                'strCreativeCommonsConfirmed' => null,
+                'dateModified' => '2025-11-20 00:28:28',
+            ],
+            [
+                'idMeal' => '53065',
+                'strMeal' => 'Sushi',
+                'strMealAlternate' => null,
+                'strCategory' => 'Seafood',
+                'strArea' => 'Japanese',
+                'strInstructions' => 'STEP 1
+TO MAKE SUSHI ROLLS: Pat out some rice. Lay a nori sheet on the mat, shiny-side down. Dip your hands in the vinegared water, then pat handfuls of rice on top in a 1cm thick layer, leaving the furthest edge from you clear.
+
+STEP 2
+Spread over some Japanese mayonnaise. Use a spoon to spread out a thin layer of mayonnaise down the middle of the rice.
+
+STEP 3
+Add the filling. Get your child to top the mayonnaise with a line of their favourite fillings – here we\'ve used tuna and cucumber.
+
+STEP 4
+Roll it up. Lift the edge of the mat over the rice, applying a little pressure to keep everything in a tight roll.
+
+STEP 5
+Stick down the sides like a stamp. When you get to the edge without any rice, brush with a little water and continue to roll into a tight roll.
+
+STEP 6
+Wrap in cling film. Remove the mat and roll tightly in cling film before a grown-up cuts the sushi into thick slices, then unravel the cling film.
+
+STEP 7
+TO MAKE PRESSED SUSHI: Layer over some smoked salmon. Line a loaf tin with cling film, then place a thin layer of smoked salmon inside on top of the cling film.
+
+STEP 8
+Cover with rice and press down. Press about 3cm of rice over the fish, fold the cling film over and press down as much as you can, using another tin if you have one.
+
+STEP 9
+Tip it out like a sandcastle. Turn block of sushi onto a chopping board. Get a grown-up to cut into fingers, then remove the cling film.
+
+STEP 10
+TO MAKE SUSHI BALLS: Choose your topping. Get a small square of cling film and place a topping, like half a prawn or a small piece of smoked salmon, on it. Use damp hands to roll walnut-sized balls of rice and place on the topping.
+
+STEP 11
+Make into tight balls. Bring the corners of the cling film together and tighten into balls by twisting it up, then unwrap and serve.',
+                'strMealThumb' => 'https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg',
+                'strTags' => null,
+                'strYoutube' => 'https://www.youtube.com/watch?v=ub68OxEypaY',
+                'strIngredient1' => 'Sushi Rice',
+                'strIngredient2' => 'Rice wine',
+                'strIngredient3' => 'Caster Sugar',
+                'strIngredient4' => 'Mayonnaise',
+                'strIngredient5' => 'Rice wine',
+                'strIngredient6' => 'Soy Sauce',
+                'strIngredient7' => 'Cucumber',
+                'strIngredient8' => '',
+                'strIngredient9' => '',
+                'strIngredient10' => '',
+                'strIngredient11' => '',
+                'strIngredient12' => '',
+                'strIngredient13' => '',
+                'strIngredient14' => '',
+                'strIngredient15' => '',
+                'strIngredient16' => '',
+                'strIngredient17' => '',
+                'strIngredient18' => '',
+                'strIngredient19' => '',
+                'strIngredient20' => '',
+                'strMeasure1' => '300ml ',
+                'strMeasure2' => '100ml',
+                'strMeasure3' => '2 tbs',
+                'strMeasure4' => '3 tbs',
+                'strMeasure5' => '1 tbs',
+                'strMeasure6' => '1 tbs',
+                'strMeasure7' => '1',
+                'strMeasure8' => ' ',
+                'strMeasure9' => ' ',
+                'strMeasure10' => ' ',
+                'strMeasure11' => ' ',
+                'strMeasure12' => ' ',
+                'strMeasure13' => ' ',
+                'strMeasure14' => ' ',
+                'strMeasure15' => ' ',
+                'strMeasure16' => ' ',
+                'strMeasure17' => ' ',
+                'strMeasure18' => ' ',
+                'strMeasure19' => ' ',
+                'strMeasure20' => ' ',
+                'strSource' => 'https://www.bbcgoodfood.com/recipes/simple-sushi',
+                'strImageSource' => null,
+                'strCreativeCommonsConfirmed' => null,
+                'dateModified' => null,
+            ],
+            [
+                'idMeal' => '53086',
+                'strMeal' => 'Migas',
+                'strMealAlternate' => null,
+                'strCategory' => 'Miscellaneous',
+                'strArea' => 'Spanish',
+                'strInstructions' => 'Crumble the bread into small pieces. Sprinkle with cold water, cover with a damp cloth and leave for 30 minutes.
+Heat 2 tsp of olive oil in a deep pan. Add the garlic cloves separated, skins on; just make a small cut with a knife to open them and keep frying for 5 minutes. Set the garlic aside.
+In the same oil, where we fried everything, simmer the bread, stirring constantly for 15 minutes and add a grinding of black pepper.
+Add the garlic, continue stirring for about 20 minutes. It will be ready when the bread is soft and golden.',
+                'strMealThumb' => 'https://www.themealdb.com/images/media/meals/xd9aj21740432378.jpg',
+                'strTags' => null,
+                'strYoutube' => 'https://www.youtube.com/watch?v=GSvFVBpqMKI',
+                'strIngredient1' => 'Bread',
+                'strIngredient2' => 'Olive Oil',
+                'strIngredient3' => 'Garlic',
+                'strIngredient4' => 'Pork',
+                'strIngredient5' => '',
+                'strIngredient6' => '',
+                'strIngredient7' => '',
+                'strIngredient8' => '',
+                'strIngredient9' => '',
+                'strIngredient10' => '',
+                'strIngredient11' => '',
+                'strIngredient12' => '',
+                'strIngredient13' => '',
+                'strIngredient14' => '',
+                'strIngredient15' => '',
+                'strIngredient16' => '',
+                'strIngredient17' => '',
+                'strIngredient18' => '',
+                'strIngredient19' => '',
+                'strIngredient20' => '',
+                'strMeasure1' => '1 large',
+                'strMeasure2' => '1 1/2 L ',
+                'strMeasure3' => 'Half',
+                'strMeasure4' => '1 Handfull',
+                'strMeasure5' => ' ',
+                'strMeasure6' => ' ',
+                'strMeasure7' => ' ',
+                'strMeasure8' => ' ',
+                'strMeasure9' => ' ',
+                'strMeasure10' => ' ',
+                'strMeasure11' => ' ',
+                'strMeasure12' => ' ',
+                'strMeasure13' => ' ',
+                'strMeasure14' => ' ',
+                'strMeasure15' => ' ',
+                'strMeasure16' => ' ',
+                'strMeasure17' => ' ',
+                'strMeasure18' => ' ',
+                'strMeasure19' => ' ',
+                'strMeasure20' => ' ',
+                'strSource' => 'https://www.ibericafood.com/Recipes/post/migas-with-pork',
+                'strImageSource' => null,
+                'strCreativeCommonsConfirmed' => null,
+                'dateModified' => null,
+            ],
+            [
+                'idMeal' => '53069',
+                'strMeal' => 'Bistek',
+                'strMealAlternate' => null,
+                'strCategory' => 'Beef',
+                'strArea' => 'Filipino',
+                'strInstructions' => '0.	Marinate beef in soy sauce, lemon (or calamansi), and ground black pepper for at least 1 hour. Note: marinate overnight for best result
+1.	Heat the cooking oil in a pan then pan-fry half of the onions until the texture becomes soft. Set aside
+2.	Drain the marinade from the beef. Set it aside. Pan-fry the beef on the same pan where the onions were fried for 1 minute per side. Remove from the pan. Set aside
+3.	Add more oil if needed. Saute garlic and remaining raw onions until onion softens.
+4.	Pour the remaining marinade and water. Bring to a boil.
+5.	Add beef. Cover the pan and simmer until the meat is tender. Note: Add water as needed.
+6.	Season with ground black pepper and salt as needed. Top with pan-fried onions.
+7.	Transfer to a serving plate. Serve hot. Share and Enjoy!
+',
+                'strMealThumb' => 'https://www.themealdb.com/images/media/meals/4pqimk1683207418.jpg',
+                'strTags' => null,
+                'strYoutube' => 'https://www.youtube.com/watch?v=xOQON5_S7as',
+                'strIngredient1' => 'Beef',
+                'strIngredient2' => 'Soy Sauce',
+                'strIngredient3' => 'Lemon',
+                'strIngredient4' => 'Garlic',
+                'strIngredient5' => 'Onion',
+                'strIngredient6' => 'Olive Oil',
+                'strIngredient7' => 'Water',
+                'strIngredient8' => 'Salt',
+                'strIngredient9' => '',
+                'strIngredient10' => '',
+                'strIngredient11' => '',
+                'strIngredient12' => '',
+                'strIngredient13' => '',
+                'strIngredient14' => '',
+                'strIngredient15' => '',
+                'strIngredient16' => '',
+                'strIngredient17' => '',
+                'strIngredient18' => '',
+                'strIngredient19' => '',
+                'strIngredient20' => '',
+                'strMeasure1' => '1 lb',
+                'strMeasure2' => '5 tablespoons',
+                'strMeasure3' => '1',
+                'strMeasure4' => '3 cloves',
+                'strMeasure5' => '3 parts ',
+                'strMeasure6' => '4 tbs',
+                'strMeasure7' => '1 cup ',
+                'strMeasure8' => '1 pinch',
+                'strMeasure9' => ' ',
+                'strMeasure10' => ' ',
+                'strMeasure11' => ' ',
+                'strMeasure12' => ' ',
+                'strMeasure13' => ' ',
+                'strMeasure14' => ' ',
+                'strMeasure15' => ' ',
+                'strMeasure16' => ' ',
+                'strMeasure17' => ' ',
+                'strMeasure18' => ' ',
+                'strMeasure19' => ' ',
+                'strMeasure20' => ' ',
+                'strSource' => 'https://panlasangpinoy.com/bistek-tagalog-beefsteak-recipe/',
+                'strImageSource' => null,
+                'strCreativeCommonsConfirmed' => null,
+                'dateModified' => null,
+            ],
+            [
+                'idMeal' => '53311',
+                'strMeal' => 'Borsch',
+                'strMealAlternate' => null,
+                'strCategory' => 'Beef',
+                'strArea' => 'Ukrainian',
+                'strInstructions' => 'step 1
+To make the stock, put the meat, whole onion, bay leaf and 2 litres of lightly salted cold water in a large saucepan. Cook over a very low heat for 1 hr 30 mins or until the beef shin is soft and falls apart easily – this can take up to 3 hrs. Skim off the scum with a spoon from time to time. Break up any larger pieces of beef into the broth, remove the whole onion and discard.
+
+step 2
+Add the potatoes to the borscht, season well with salt and pepper and cook for 10-15 mins until tender. Meanwhile, heat the sunflower oil in a large, deep frying pan. Add the diced onion and carrot, and cook over a medium heat, stirring, until the carrot is soft and is about to start caramelising.
+
+step 3
+Add the beetroot and cook for around 5 mins, stirring occasionally. Add the red pepper, if using, and cook for another 2 mins, then add the tomatoes and prunes, stir, then increase the heat and boil to reduce slightly, before adding everything to the borscht.
+
+step 4
+Add the shredded cabbage and the kidney beans, and cook for 7-10 mins or until tender. Serve with a dollop of sour cream or crème fraîche, lots of chopped dill and some crusty bread.',
+                'strMealThumb' => 'https://www.themealdb.com/images/media/meals/804v1j1764367088.jpg',
+                'strTags' => null,
+                'strYoutube' => 'https://www.youtube.com/watch?v=6CXgPVw_-0g',
+                'strIngredient1' => 'Beef Shin',
+                'strIngredient2' => 'Onion',
+                'strIngredient3' => 'Bay Leaf',
+                'strIngredient4' => 'Potatoes',
+                'strIngredient5' => 'Sunflower Oil',
+                'strIngredient6' => 'Onion',
+                'strIngredient7' => 'Carrots',
+                'strIngredient8' => 'Beetroot',
+                'strIngredient9' => 'Red Pepper',
+                'strIngredient10' => 'Tinned Tomatos',
+                'strIngredient11' => 'Prunes',
+                'strIngredient12' => 'White Cabbage',
+                'strIngredient13' => 'Kidney Beans',
+                'strIngredient14' => 'Creme Fraiche',
+                'strIngredient15' => 'Dill',
+                'strIngredient16' => 'Crusty Bread',
+                'strIngredient17' => '',
+                'strIngredient18' => '',
+                'strIngredient19' => '',
+                'strIngredient20' => '',
+                'strMeasure1' => '1kg',
+                'strMeasure2' => '1',
+                'strMeasure3' => '1',
+                'strMeasure4' => '2.5kg',
+                'strMeasure5' => '2 tablespoons',
+                'strMeasure6' => '1 Diced',
+                'strMeasure7' => '1',
+                'strMeasure8' => '200g',
+                'strMeasure9' => '1 chopped',
+                'strMeasure10' => '200g',
+                'strMeasure11' => '6',
+                'strMeasure12' => '1/2 ',
+                'strMeasure13' => '400g',
+                'strMeasure14' => '100 ml ',
+                'strMeasure15' => 'Bunch',
+                'strMeasure16' => 'To serve',
+                'strMeasure17' => ' ',
+                'strMeasure18' => ' ',
+                'strMeasure19' => ' ',
+                'strMeasure20' => ' ',
+                'strSource' => 'https://www.bbcgoodfood.com/recipes/borsch',
+                'strImageSource' => null,
+                'strCreativeCommonsConfirmed' => null,
+                'dateModified' => '2025-11-28 21:56:50',
+            ],
+            [
+                'idMeal' => '53269',
+                'strMeal' => 'Hummus',
+                'strMealAlternate' => null,
+                'strCategory' => 'Side',
+                'strArea' => 'Turkish',
+                'strInstructions' => 'step 1
+Drain the chickpeas into a sieve set over a bowl or jug to catch the liquid. Tip the chickpeas, tahini, garlic and yogurt into a food processor or blender and whizz to smooth.
+
+step 2
+Whizz in a tbsp of the chickpea liquid at a time until you have a nice consistency, then scrape into a bowl.
+
+step 3
+Stir in a squeeze of lemon juice and season to taste.',
+                'strMealThumb' => 'https://www.themealdb.com/images/media/meals/gpon5u1763801180.jpg',
+                'strTags' => null,
+                'strYoutube' => 'https://www.youtube.com/watch?v=EsZFJEjANiA',
+                'strIngredient1' => 'Chickpeas',
+                'strIngredient2' => 'Tahini Paste',
+                'strIngredient3' => 'Garlic Clove',
+                'strIngredient4' => 'Greek Yogurt',
+                'strIngredient5' => 'Lemon',
+                'strIngredient6' => '',
+                'strIngredient7' => '',
+                'strIngredient8' => '',
+                'strIngredient9' => '',
+                'strIngredient10' => '',
+                'strIngredient11' => '',
+                'strIngredient12' => '',
+                'strIngredient13' => '',
+                'strIngredient14' => '',
+                'strIngredient15' => '',
+                'strIngredient16' => '',
+                'strIngredient17' => '',
+                'strIngredient18' => '',
+                'strIngredient19' => '',
+                'strIngredient20' => '',
+                'strMeasure1' => '400g',
+                'strMeasure2' => '1 tablespoon',
+                'strMeasure3' => '1 large',
+                'strMeasure4' => '3  tablespoons',
+                'strMeasure5' => 'Juice of half',
+                'strMeasure6' => ' ',
+                'strMeasure7' => ' ',
+                'strMeasure8' => ' ',
+                'strMeasure9' => ' ',
+                'strMeasure10' => ' ',
+                'strMeasure11' => ' ',
+                'strMeasure12' => ' ',
+                'strMeasure13' => ' ',
+                'strMeasure14' => ' ',
+                'strMeasure15' => ' ',
+                'strMeasure16' => ' ',
+                'strMeasure17' => ' ',
+                'strMeasure18' => ' ',
+                'strMeasure19' => ' ',
+                'strMeasure20' => ' ',
+                'strSource' => 'https://www.bbcgoodfood.com/recipes/easy-hummus-recipe',
+                'strImageSource' => null,
+                'strCreativeCommonsConfirmed' => null,
+                'dateModified' => '2025-11-22 08:44:38',
+            ],
+            [
+                'idMeal' => '53254',
+                'strMeal' => 'Ezme',
+                'strMealAlternate' => null,
+                'strCategory' => 'Vegetarian',
+                'strArea' => 'Turkish',
+                'strInstructions' => 'step 1
+Put the tomatoes and all of the peppers in a food processor and blitz until finely chopped. Tip out into a sieve, set over a bowl and leave to strain. Add the onions, garlic and parsley to the food processor and blitz until finely chopped, then set aside.
+
+step 2
+Add red pepper paste, tomato purée, pomegranate molasses, pul biber, sumac, dried mint and most of the extra virgin olive oil to a serving bowl and whisk well so everything comes together as a sauce. Tip in the blitzed onion mixture and the strained pepper mixture along with 1 tsp flaky sea salt . Stir well, then drizzle with the remaining extra virgin olive oil to serve.',
+                'strMealThumb' => 'https://www.themealdb.com/images/media/meals/pb6mj11763788331.jpg',
+                'strTags' => null,
+                'strYoutube' => 'https://www.youtube.com/watch?v=Z1mX-C2fAuc',
+                'strIngredient1' => 'Tomato',
+                'strIngredient2' => 'Romano Pepper',
+                'strIngredient3' => 'Green Chilli',
+                'strIngredient4' => 'Onion',
+                'strIngredient5' => 'Garlic',
+                'strIngredient6' => 'Parsley',
+                'strIngredient7' => 'Red Pepper Paste',
+                'strIngredient8' => 'Tomato Puree',
+                'strIngredient9' => 'Pomegranate Molasses',
+                'strIngredient10' => 'Pul Biber',
+                'strIngredient11' => 'Sumac',
+                'strIngredient12' => 'Dried Mint',
+                'strIngredient13' => 'Extra Virgin Olive Oil',
+                'strIngredient14' => '',
+                'strIngredient15' => '',
+                'strIngredient16' => '',
+                'strIngredient17' => '',
+                'strIngredient18' => '',
+                'strIngredient19' => '',
+                'strIngredient20' => '',
+                'strMeasure1' => '3 Large',
+                'strMeasure2' => '1 medium',
+                'strMeasure3' => '1 medium',
+                'strMeasure4' => '1 small',
+                'strMeasure5' => '2 cloves minced',
+                'strMeasure6' => '25g',
+                'strMeasure7' => '2 tablespoons',
+                'strMeasure8' => '1 tablespoon',
+                'strMeasure9' => '2 tablespoons',
+                'strMeasure10' => '1 tablespoon',
+                'strMeasure11' => '2 tsp',
+                'strMeasure12' => '1 tablespoon',
+                'strMeasure13' => '60 ml ',
+                'strMeasure14' => ' ',
+                'strMeasure15' => ' ',
+                'strMeasure16' => ' ',
+                'strMeasure17' => ' ',
+                'strMeasure18' => ' ',
+                'strMeasure19' => ' ',
+                'strMeasure20' => ' ',
+                'strSource' => 'https://www.bbcgoodfood.com/recipes/ezme',
+                'strImageSource' => null,
+                'strCreativeCommonsConfirmed' => null,
+                'dateModified' => '2025-11-22 05:10:34',
+            ],
+            [
+                'idMeal' => '53026',
+                'strMeal' => 'Tamiya',
+                'strMealAlternate' => null,
+                'strCategory' => 'Vegetarian',
+                'strArea' => 'Egyptian',
+                'strInstructions' => 'oak the beans in water to cover overnight.Drain. If skinless beans are unavailable, rub to loosen the skins, then discard the skins. Pat the beans dry with a towel.
+Grind the beans in a food mill or meat grinder.If neither appliance is available, process them in a food processor but only until the beans form a paste. (If blended too smoothly, the batter tends to fall apart during cooking.) Add the scallions, garlic, cilantro, cumin, baking powder, cayenne, salt, pepper, and coriander, if using.  Refrigerate for at least 30 minutes.
+Shape the bean mixture into 1-inch balls.Flatten slightly and coat with flour.
+Heat at least 1½-inches of oil over medium heat to 365 degrees.
+Fry the patties in batches, turning once, until golden brown on all sides, about 5 minutes.Remove with a wire mesh skimmer or slotted spoon. Serve as part of a meze or in pita bread with tomato-cucumber salad and tahina sauce.',
+                'strMealThumb' => 'https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg',
+                'strTags' => null,
+                'strYoutube' => 'https://www.youtube.com/watch?v=mulqW-J3Yy4',
+                'strIngredient1' => 'Broad Beans',
+                'strIngredient2' => 'Spring Onions',
+                'strIngredient3' => 'Garlic Clove',
+                'strIngredient4' => 'Parsley',
+                'strIngredient5' => 'Cumin',
+                'strIngredient6' => 'Baking Powder',
+                'strIngredient7' => 'Cayenne Pepper',
+                'strIngredient8' => 'Flour',
+                'strIngredient9' => 'Vegetable Oil',
+                'strIngredient10' => '',
+                'strIngredient11' => '',
+                'strIngredient12' => '',
+                'strIngredient13' => '',
+                'strIngredient14' => '',
+                'strIngredient15' => '',
+                'strIngredient16' => '',
+                'strIngredient17' => '',
+                'strIngredient18' => '',
+                'strIngredient19' => '',
+                'strIngredient20' => '',
+                'strMeasure1' => '3 cups ',
+                'strMeasure2' => '6',
+                'strMeasure3' => '4',
+                'strMeasure4' => '1/4 cup',
+                'strMeasure5' => '2 tsp',
+                'strMeasure6' => '1 tsp ',
+                'strMeasure7' => '1/2 tsp',
+                'strMeasure8' => 'Spinkling',
+                'strMeasure9' => 'As required',
+                'strMeasure10' => ' ',
+                'strMeasure11' => ' ',
+                'strMeasure12' => ' ',
+                'strMeasure13' => ' ',
+                'strMeasure14' => ' ',
+                'strMeasure15' => ' ',
+                'strMeasure16' => ' ',
+                'strMeasure17' => ' ',
+                'strMeasure18' => ' ',
+                'strMeasure19' => ' ',
+                'strMeasure20' => ' ',
+                'strSource' => 'https://oukosher.org/recipes/tamiya-egyptian-dried-fava-bean-fritters/',
+                'strImageSource' => null,
+                'strCreativeCommonsConfirmed' => null,
+                'dateModified' => null,
+            ],
+            [
+                'idMeal' => '52978',
+                'strMeal' => 'Kumpir',
+                'strMealAlternate' => null,
+                'strCategory' => 'Side',
+                'strArea' => 'Turkish',
+                'strInstructions' => 'If you order kumpir in Turkey, the standard filling is first, lots of butter mashed into the potato, followed by cheese. There\'s then a row of other toppings that you can just point at to your heart\'s content – sweetcorn, olives, salami, coleslaw, Russian salad, allsorts – and you walk away with an over-stuffed potato because you got ever-excited by the choices on offer.
+
+Grate (roughly – you can use as much as you like) 150g of cheese.
+Finely chop one onion and one sweet red pepper.
+Put these ingredients into a large bowl with a good sprinkling of salt and pepper, chilli flakes (optional).',
+                'strMealThumb' => 'https://www.themealdb.com/images/media/meals/mlchx21564916997.jpg',
+                'strTags' => 'SideDish',
+                'strYoutube' => 'https://www.youtube.com/watch?v=IEDEtZ4UVtI',
+                'strIngredient1' => 'Potatoes',
+                'strIngredient2' => 'Butter',
+                'strIngredient3' => 'Cheese',
+                'strIngredient4' => 'Onion',
+                'strIngredient5' => 'Red Pepper',
+                'strIngredient6' => 'Red Chilli Flakes',
+                'strIngredient7' => '',
+                'strIngredient8' => '',
+                'strIngredient9' => '',
+                'strIngredient10' => '',
+                'strIngredient11' => '',
+                'strIngredient12' => '',
+                'strIngredient13' => '',
+                'strIngredient14' => '',
+                'strIngredient15' => '',
+                'strIngredient16' => '',
+                'strIngredient17' => '',
+                'strIngredient18' => '',
+                'strIngredient19' => '',
+                'strIngredient20' => '',
+                'strMeasure1' => '2 large',
+                'strMeasure2' => '2 tbs',
+                'strMeasure3' => '150g',
+                'strMeasure4' => '1 large',
+                'strMeasure5' => '1 large',
+                'strMeasure6' => 'Pinch',
+                'strMeasure7' => ' ',
+                'strMeasure8' => ' ',
+                'strMeasure9' => ' ',
+                'strMeasure10' => ' ',
+                'strMeasure11' => ' ',
+                'strMeasure12' => ' ',
+                'strMeasure13' => ' ',
+                'strMeasure14' => ' ',
+                'strMeasure15' => ' ',
+                'strMeasure16' => ' ',
+                'strMeasure17' => ' ',
+                'strMeasure18' => ' ',
+                'strMeasure19' => ' ',
+                'strMeasure20' => ' ',
+                'strSource' => 'http://www.turkeysforlife.com/2013/10/firinda-kumpir-turkish-street-food.html',
+                'strImageSource' => null,
+                'strCreativeCommonsConfirmed' => null,
+                'dateModified' => null,
+            ],
+            [
+                'idMeal' => '52929',
+                'strMeal' => 'Timbits',
+                'strMealAlternate' => null,
+                'strCategory' => 'Dessert',
+                'strArea' => 'Canadian',
+                'strInstructions' => 'Sift together dry ingredients.
+Mix together wet ingredients and incorporate into dry. Stir until smooth.
+Drop by teaspoonfuls(no bigger) into hot oil (365 degrees, no hotter), turning after a few moments until golden brown on all sides.
+Remove and drain.
+Roll in cinnamon sugar while still warm and serve.',
+                'strMealThumb' => 'https://www.themealdb.com/images/media/meals/txsupu1511815755.jpg',
+                'strTags' => 'Snack,Treat',
+                'strYoutube' => 'https://www.youtube.com/watch?v=fFLn1h80AGQ',
+                'strIngredient1' => 'Flour',
+                'strIngredient2' => 'Sugar',
+                'strIngredient3' => 'Baking Powder',
+                'strIngredient4' => 'Salt',
+                'strIngredient5' => 'Egg',
+                'strIngredient6' => 'Milk',
+                'strIngredient7' => 'Oil',
+                'strIngredient8' => 'Oil',
+                'strIngredient9' => 'Icing Sugar',
+                'strIngredient10' => '',
+                'strIngredient11' => '',
+                'strIngredient12' => '',
+                'strIngredient13' => '',
+                'strIngredient14' => '',
+                'strIngredient15' => '',
+                'strIngredient16' => '',
+                'strIngredient17' => '',
+                'strIngredient18' => '',
+                'strIngredient19' => '',
+                'strIngredient20' => '',
+                'strMeasure1' => '2 cups ',
+                'strMeasure2' => '1/3 cup',
+                'strMeasure3' => '3 tsp',
+                'strMeasure4' => '½ tsp',
+                'strMeasure5' => '1 beaten',
+                'strMeasure6' => '¾ cup',
+                'strMeasure7' => '3 tbs',
+                'strMeasure8' => 'for frying',
+                'strMeasure9' => 'garnish',
+                'strMeasure10' => '',
+                'strMeasure11' => '',
+                'strMeasure12' => '',
+                'strMeasure13' => '',
+                'strMeasure14' => '',
+                'strMeasure15' => '',
+                'strMeasure16' => '',
+                'strMeasure17' => '',
+                'strMeasure18' => '',
+                'strMeasure19' => '',
+                'strMeasure20' => '',
+                'strSource' => 'http://www.geniuskitchen.com/recipe/drop-doughnuts-133877',
+                'strImageSource' => null,
+                'strCreativeCommonsConfirmed' => null,
+                'dateModified' => null,
+            ],
+            [
+                'idMeal' => '53013',
+                'strMeal' => 'Big Mac',
+                'strMealAlternate' => null,
+                'strCategory' => 'Beef',
+                'strArea' => 'American',
+                'strInstructions' => 'For the Big Mac sauce, combine all the ingredients in a bowl, season with salt and chill until ready to use.
+2. To make the patties, season the mince with salt and pepper and form into 4 balls using about 1/3 cup mince each. Place each onto a square of baking paper and flatten to form into four x 15cm circles. Heat oil in a large frypan over high heat. In 2 batches, cook beef patties for 1-2 minutes each side until lightly charred and cooked through. Remove from heat and keep warm. Repeat with remaining two patties.
+3. Carefully slice each burger bun into three acrossways, then lightly toast.
+4. To assemble the burgers, spread a little Big Mac sauce over the bottom base. Top with some chopped onion, shredded lettuce, slice of cheese, beef patty and some pickle slices. Top with the middle bun layer, and spread with more Big Mac sauce, onion, lettuce, pickles, beef patty and then finish with more sauce. Top with burger lid to serve.
+5. After waiting half an hour for your food to settle, go for a jog.',
+                'strMealThumb' => 'https://www.themealdb.com/images/media/meals/urzj1d1587670726.jpg',
+                'strTags' => null,
+                'strYoutube' => 'https://www.youtube.com/watch?v=C5J39YnnPsg',
+                'strIngredient1' => 'Minced Beef',
+                'strIngredient2' => 'Olive Oil',
+                'strIngredient3' => 'Sesame Seed Burger Buns',
+                'strIngredient4' => 'Onion',
+                'strIngredient5' => 'Iceberg Lettuce',
+                'strIngredient6' => 'Cheese',
+                'strIngredient7' => 'Dill Pickles',
+                'strIngredient8' => 'Mayonnaise',
+                'strIngredient9' => 'White Wine Vinegar',
+                'strIngredient10' => 'Pepper',
+                'strIngredient11' => 'Mustard',
+                'strIngredient12' => 'Onion Salt',
+                'strIngredient13' => 'Garlic Powder',
+                'strIngredient14' => 'Paprika',
+                'strIngredient15' => '',
+                'strIngredient16' => '',
+                'strIngredient17' => '',
+                'strIngredient18' => '',
+                'strIngredient19' => '',
+                'strIngredient20' => '',
+                'strMeasure1' => '400g',
+                'strMeasure2' => '2 tbs',
+                'strMeasure3' => '2',
+                'strMeasure4' => 'Chopped',
+                'strMeasure5' => '1/4 ',
+                'strMeasure6' => '2 sliced',
+                'strMeasure7' => '2 large',
+                'strMeasure8' => '1 cup ',
+                'strMeasure9' => '2 tsp',
+                'strMeasure10' => 'Pinch',
+                'strMeasure11' => '2 tsp',
+                'strMeasure12' => '1 1/2 tsp ',
+                'strMeasure13' => '1 1/2 tsp ',
+                'strMeasure14' => '1/2 tsp',
+                'strMeasure15' => ' ',
+                'strMeasure16' => ' ',
+                'strMeasure17' => ' ',
+                'strMeasure18' => ' ',
+                'strMeasure19' => ' ',
+                'strMeasure20' => ' ',
+                'strSource' => 'https://www.delicious.com.au/recipes/finally-recipe-worlds-top-selling-burger-big-mac/5221ee4a-279e-4a0b-8629-f442dc46822e',
+                'strImageSource' => null,
+                'strCreativeCommonsConfirmed' => null,
+                'dateModified' => null,
+            ],
+        ];
+
+    
+            foreach ($meals as $meal) {
+
+            // 🔧 normalize all 20 measure fields
+            for ($i = 1; $i <= 20; $i++) {
+                $key = "strMeasure{$i}";
+
+                if (isset($meal[$key])) {
+                    $meal[$key] = $this->normalizeMeasure($meal[$key]);
+                }
+            }
+
+            Meal::create($meal);
+    }
+    }
+    private function normalizeMeasure($value): ?int
+    {
+        $value = trim((string) $value);
+
+        // extract digits only
+        preg_match('/\d+/', $value, $matches);
+
+        return $matches ? (int) $matches[0] : null;
+    }
+    
+ }

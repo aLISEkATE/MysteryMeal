@@ -1,11 +1,15 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MealController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/recipes', [MealController::class, 'recipes'])->name('recipes');
+Route::get('/recipe/{id}', [MealController::class, 'viewRecipe'])->name('recipe.view');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
