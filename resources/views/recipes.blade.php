@@ -1,9 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="dashboard-title">
-            Recipes
-        </h2>
-    </x-slot>
+
 
     <style>
         .page.recipe-page {
@@ -82,9 +78,10 @@
         .recipes-grid > a.recipe-card .recipe-image {
             width: 100%;
             aspect-ratio: 1 / 1;
-            border-radius: 20px;
             overflow: hidden;
             background: #f8fafc;
+            min-height: 200px;
+            max-height: 300px;
         }
         .recipes-grid > a.recipe-card .recipe-image img {
             width: 100%;
@@ -227,9 +224,12 @@
     <form method="GET" action="{{ route('recipes') }}">
         <div style="display: flex; flex-direction: column; gap: 16px;">
             <div style="display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: center;">
-                <label for="ingredients">Available ingredients:</label>
+                <label for="ingredients">Available ingredients:</label><br>
                 <input id="ingredients" name="ingredients" type="text" value="{{ old('ingredients', $searchIngredients ?? '') }}" placeholder="Milk, cheese, pasta" />
-                <button type="submit" class="btn btn-blue">Find recipes</button>
+                    <br>
+                    @if(!empty($requestedIngredients)) 
+            <p class="search-note">Searching for recipes with: <strong>{{ implode(', ', $requestedIngredients) }}</strong></p>
+                  @endif
             </div>
             
             <!-- Cooking Time Filter -->
@@ -243,12 +243,11 @@
                     <option value="120" {{ request('max_time') == '120' ? 'selected' : '' }}>Under 2 hours</option>
                 </select>
             </div>
+            <button type="submit" class="btn btn-blue">Find recipes</button>
         </div>
     </form>
 
-    @if(!empty($requestedIngredients))
-        <p class="search-note">Searching for recipes with: <strong>{{ implode(', ', $requestedIngredients) }}</strong></p>
-    @endif
+
 </div>
 
         @if($meals->count())

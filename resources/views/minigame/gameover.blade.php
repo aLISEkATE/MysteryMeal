@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GAME OVER</title>
+
+<x-app-layout>
+
     <style>
         body {
             margin: 0;
@@ -44,7 +47,6 @@
             color: #ff8fb1;
             text-shadow: 
                 0 2px 4px rgba(255, 139, 177, 0.2);
-            margin-bottom: 2rem;
             animation: flicker 2s infinite alternate;
             position: relative;
             z-index: 2;
@@ -135,5 +137,8 @@
         <div>{{ Auth::user()->name }}</div>
         <a href="/minigame">Try Again</a>
     </div>
+
+</x-app-layout>
+
 </body>
 </html>

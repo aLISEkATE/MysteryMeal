@@ -1,9 +1,5 @@
 ﻿<x-app-layout>
-    <x-slot name="header">
-        <h2 class="dashboard-title">
-            {{ data_get($meal, 'strMeal') }}
-        </h2>
-    </x-slot>
+
 
     <style>
         .recipe-page {
@@ -105,6 +101,8 @@
         }
     </style>
 
+
+
     <div class="page recipe-page">
         <div class="recipe-card">
             <div class="recipe-content" style="display:flex; flex-direction:column; gap:28px; padding:32px;">
@@ -114,10 +112,21 @@
                     </div>
                 @endif
 
+
+
+
                 <div class="recipe-body" style="display:flex; flex-direction:column; gap:18px; flex:1; min-height:0;">
+
+        <h2 class="dashboard-title">
+            {{ data_get($meal, 'strMeal') }} <br><br>
+        </h2> 
 
                 <!-- Recipe Meta Info -->
                 <div class="meta recipe-meta">
+
+
+        
+
                     @if(data_get($meal, 'strCategory'))
                         <span class="badge badge-blue">
                             {{ data_get($meal, 'strCategory') }}

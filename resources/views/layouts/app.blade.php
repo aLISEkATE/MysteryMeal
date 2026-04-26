@@ -18,8 +18,8 @@
 <body class="retro-body">
 
     <div class="app-wrapper">
-
-
+        <!-- Navigation Menu -->
+        <x-navigation-menu />
 
         @isset($header)
             <header class="page-header">
@@ -33,7 +33,66 @@
             {{ $slot }}
         </main>
 
+        <!-- Footer with Back Button -->
+        <footer class="page-footer">
+            <div class="footer-container">
+                <button onclick="window.history.back()" class="back-btn">
+                    ← Back
+                </button>
+                <p class="footer-text">© {{ date('Y') }} MysteryMeal - Delicious Recipes</p>
+            </div>
+        </footer>
     </div>
 
+    <style>
+        .page-footer {
+            background: white;
+            border-top: 1px solid #ffe3ec;
+            padding: 20px 24px;
+            margin-top: 40px;
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .back-btn {
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            padding: 10px 20px;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .back-btn:hover {
+            background: #ff8fb1;
+            color: white;
+            border-color: #ff8fb1;
+        }
+        
+        .footer-text {
+            color: #9ca3af;
+            font-size: 0.85rem;
+        }
+        
+        /* Ensure main content takes available space */
+        .app-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .main-content {
+            flex: 1;
+        }
+    </style>
 </body>
 </html>
