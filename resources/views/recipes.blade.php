@@ -18,31 +18,21 @@
             @endif
         </div>
 
-        @php
-            $results = $apiMeals ?? $meals;
-        @endphp
-
-        @if($results->count())
+        @if($meals->count())
             <div class="recipes">
-                @foreach($results as $meal)
+                @foreach($meals as $meal)
                     @php
-                        $isApi = isset($apiMeals);
-                        $detailUrl = $isApi
-                            ? route('recipe.api.view', ['id' => data_get($meal, 'idMeal')])
-                            : route('recipe.view', ['id' => data_get($meal, 'id')]);
-                        $ingredients = data_get($meal, 'ingredients', []);
-                        if (empty($ingredients)) {
-                            $ingredients = collect(range(1, 20))
-                                ->map(function ($i) use ($meal) {
-                                    return [
-                                        'ingredient' => trim(data_get($meal, "strIngredient{$i}")) ?? '',
-                                        'measure' => trim(data_get($meal, "strMeasure{$i}")) ?? '',
-                                    ];
-                                })
-                                ->filter(fn($item) => !empty($item['ingredient']))
-                                ->values()
-                                ->all();
-                        }
+                        $detailUrl = route('recipe.view', ['id' => data_get($meal, 'id')]);
+                        $ingredients = collect(range(1, 20))
+                            ->map(function ($i) use ($meal) {
+                                return [
+                                    'name' => trim(data_get($meal, "strIngredient{$i}")) ?? '',
+                                    'measure' => trim(data_get($meal, "strMeasure{$i}")) ?? '',
+                                ];
+                            })
+                            ->filter(fn($item) => !empty($item['name']))
+                            ->values()
+                            ->all();
                     @endphp
 
                     <a href="{{ $detailUrl }}" class="recipe-card" style="text-decoration: none; color: inherit; cursor: pointer;">

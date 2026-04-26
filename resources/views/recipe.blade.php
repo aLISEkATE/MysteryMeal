@@ -5,19 +5,114 @@
         </h2>
     </x-slot>
 
-    <div class="page">
-        <div class="recipe-card" style="display: block;">
+    <style>
+        .recipe-page {
+            padding: 32px 18px;
+        }
+        .recipe-card {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #fff;
+            border: 1px solid #ffe3ec;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 24px 48px rgba(0,0,0,0.08);
+        }
+        .recipe-content {
+            display: grid;
+            grid-template-columns: minmax(280px, 1fr) minmax(360px, 1.4fr);
+            gap: 28px;
+            align-items: start;
+            padding: 32px;
+        }
+        .recipe-image {
+            min-width: 0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .recipe-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+        .recipe-body {
+            min-width: 0;
+        }
+        .recipe-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 20px;
+        }
+        .recipe-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .recipe-tags .tag {
+            background: #fff1f5;
+            color: #d63384;
+            padding: 5px 12px;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+        }
+        .instructions h3,
+        .ingredients h3 {
+            margin-bottom: 15px;
+        }
+        .ingredient-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border-bottom: 1px solid #ffd6a5;
+        }
+        .links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .extra {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        .extra p {
+            margin: 0.35rem 0;
+            color: #575757;
+        }
+        @media (max-width: 900px) {
+            .recipe-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 640px) {
+            .recipe-card {
+                border-radius: 18px;
+            }
+            .recipe-content {
+                padding: 22px;
+            }
+        }
+    </style>
 
-            @if(data_get($meal, 'strMealThumb'))
-                <div class="recipe-image">
-                    <img src="{{ data_get($meal, 'strMealThumb') }}" alt="{{ data_get($meal, 'strMeal') }}" style="width: 100%; max-height: 400px; object-fit: cover;">
-                </div>
-            @endif
+    <div class="page recipe-page">
+        <div class="recipe-card">
+            <div class="recipe-content">
+                @if(data_get($meal, 'strMealThumb'))
+                    <div class="recipe-image">
+                        <img src="{{ data_get($meal, 'strMealThumb') }}" alt="{{ data_get($meal, 'strMeal') }}">
+                    </div>
+                @endif
 
-            <div class="recipe-body">
+                <div class="recipe-body">
 
                 <!-- Recipe Meta Info -->
-                <div class="meta" style="margin-bottom: 20px;">
+                <div class="meta recipe-meta">
                     @if(data_get($meal, 'strCategory'))
                         <span class="badge badge-blue">
                             {{ data_get($meal, 'strCategory') }}
@@ -32,7 +127,7 @@
                 </div>
 
                 @if(data_get($meal, 'strTags'))
-                    <div class="tags" style="margin-bottom: 20px;">
+                    <div class="tags recipe-tags">
                         @foreach(explode(',', data_get($meal, 'strTags')) as $tag)
                             <span class="tag">{{ trim($tag) }}</span>
                         @endforeach
@@ -119,5 +214,4 @@
             </div>
         </div>
     </div>
-
 </x-app-layout>
