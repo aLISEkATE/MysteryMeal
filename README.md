@@ -1,58 +1,181 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# MysteryMeal
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel-based recipe discovery and minigame application with a pastel pink and blue aesthetic.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Browse recipes by category and cuisine
+- Interactive minigame for engagement
+- User authentication and profiles
+- Favorite recipes tracking
+- Score and time tracking for minigames
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Prerequisites
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP 8.5+
+- Node.js 18+
+- npm or yarn
+- MySQL 8.0+
+- Composer
 
-## Learning Laravel
+## Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### 1. Clone the repository
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone <repository-url>
+cd MysteryMeal
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 2. Install PHP dependencies
 
-## Contributing
+```bash
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Install Node.js dependencies
 
-## Code of Conduct
+```bash
+npm install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 4. Set up environment file
 
-## Security Vulnerabilities
+```bash
+cp .env.example .env
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Edit the `.env` file and configure your database credentials:
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=mysterymeal
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 5. Generate application key
+
+```bash
+php artisan key:generate
+```
+
+### 6. Create database
+
+Create a MySQL database named `mysterymeal`:
+
+```sql
+CREATE DATABASE mysterymeal;
+```
+
+### 7. Run migrations
+
+```bash
+php artisan migrate
+```
+
+### 8. Seed the database (optional)
+
+```bash
+php artisan db:seed
+```
+
+This will populate the database with sample meal data.
+
+## Running the Project
+
+### Start the development server
+
+In one terminal, start the Laravel server:
+
+```bash
+php artisan serve
+```
+
+The application will be available at `http://127.0.0.1:8000`
+
+### Start the Vite development server (in another terminal)
+
+```bash
+npm run dev
+```
+
+This will build and watch your CSS and JavaScript files.
+
+### For production build
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+- `app/Models/` - Database models (Meal, User, Score, etc.)
+- `app/Http/Controllers/` - Application controllers
+- `resources/views/` - Blade template files
+- `resources/js/` - JavaScript files including minigame logic
+- `resources/css/` - Stylesheet files
+- `database/migrations/` - Database migration files
+- `database/seeders/` - Database seeder files
+- `routes/` - Application routes
+
+## Key Features
+
+### Recipes
+- View all available recipes
+- Filter by category and area
+- Detailed recipe view with ingredients and instructions
+
+### Minigame
+- Catch falling ingredients
+- Avoid bad items
+- Track score and time
+- Increasing difficulty as the game progresses
+
+### User System
+- User registration and login
+- Profile management
+- Favorite recipes tracking
+
+## Testing
+
+To run tests:
+
+```bash
+php artisan test
+```
+
+## Troubleshooting
+
+### Vite build errors
+
+If you encounter import resolution errors:
+
+```bash
+npm install
+npm run dev
+```
+
+### Database connection errors
+
+Ensure your MySQL server is running and your `.env` database credentials are correct.
+
+### Permission errors
+
+Make sure the `storage/` and `bootstrap/cache/` directories are writable:
+
+```bash
+chmod -R 775 storage bootstrap/cache
+```
+
+## Development Notes
+
+- The minigame has a speed limit to ensure items remain visible
+- Images are fetched from external sources
+- The application uses Laravel Breeze for authentication
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open source and available under the MIT License.
