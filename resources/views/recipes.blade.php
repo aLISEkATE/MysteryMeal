@@ -76,13 +76,6 @@
                                 @foreach($ingredients as $item)
                                    <div class="ingredient-row" style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
 
-                                        <img 
-                                            src="{{ $item['image'] }}" 
-                                            alt="{{ $item['ingredient'] }}"
-                                            style="width:40px; height:40px; object-fit:contain;"
-                                            onerror="this.style.display='none'"
-                                        >
-
                                         <span style="flex:1;">
                                             {{ $item['ingredient'] }}
                                         </span>

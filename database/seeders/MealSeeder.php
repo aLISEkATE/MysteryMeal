@@ -781,28 +781,10 @@ Roll in cinnamon sugar while still warm and serve.',
         ];
 
     
-            foreach ($meals as $meal) {
+            foreach ($meals as $meal) { Meal::create($meal);}
 
-            // 🔧 normalize all 20 measure fields
-            for ($i = 1; $i <= 20; $i++) {
-                $key = "strMeasure{$i}";
-
-                if (isset($meal[$key])) {
-                    $meal[$key] = $this->normalizeMeasure($meal[$key]);
-                }
-            }
-
-            Meal::create($meal);
+           
     }
-    }
-    private function normalizeMeasure($value): ?int
-    {
-        $value = trim((string) $value);
 
-        // extract digits only
-        preg_match('/\d+/', $value, $matches);
-
-        return $matches ? (int) $matches[0] : null;
-    }
     
  }

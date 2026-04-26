@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\MealController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,5 +21,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::get('/minigame', function () {
+    return view('minigame/minigame');
+})->middleware(['auth', 'verified']);
+Route::get("/minigame/gameover", [ScoreController::class, 'gameover'])->middleware(['auth', 'verified']);
+
+Route::post('/scores', [ScoreController::class, 'store'])->name('scores.store');
+Route::get('/scores', [ScoreController::class, 'index'])->name('scores.index');
+
 
 require __DIR__.'/auth.php';

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->integer('score');
-            $table->integer('survival_time');
+            $table->integer('time');
             $table->timestamps();
         });
     }
