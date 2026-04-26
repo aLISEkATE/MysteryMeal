@@ -7,20 +7,9 @@ use Illuminate\Http\Request;
 
 class MealController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-     public function index()
+    public function index()
     {
         return response()->json(Meal::all());
-        return view('recipes', compact('meals'));
-
-    $meals = Meal::all();
-
-    foreach ($meals as $meal) {
-        $meal->ingredients_list = $this->formatIngredients($meal);
-    }
-  
     }
 
     private function formatIngredients($meal): array
@@ -59,33 +48,150 @@ class MealController extends Controller
     public function recipes(Request $request)
     {
         $ingredientsInput = $request->input('ingredients', '');
+        $maxTime = $request->input('max_time');
+        
         $requestedIngredients = collect(explode(',', $ingredientsInput))
             ->map(fn($item) => trim(strtolower($item)))
             ->filter()
             ->values()
             ->all();
 
+        // Get API meals
         $meals = Meal::all();
 
+        // Get user-created recipes
+        $userRecipes = \App\Models\UserRecipe::where('user_id', auth()->id())->get();
+
+        // Convert user recipes to same format as API meals
+        $formattedUserRecipes = $userRecipes->map(function ($userRecipe) {
+            $ingredientsList = is_array($userRecipe->ingredients) 
+                ? $userRecipe->ingredients 
+                : json_decode($userRecipe->ingredients, true);
+            
+            return (object)[
+                'id' => 'user_' . $userRecipe->id,
+                'idMeal' => 'user_' . $userRecipe->id,
+                'strMeal' => $userRecipe->title,
+                'strMealAlternate' => null,
+                'strCategory' => $userRecipe->category,
+                'strArea' => 'User Recipe',
+                'strInstructions' => $userRecipe->instructions,
+                'strMealThumb' => $userRecipe->image ?? 'https://via.placeholder.com/300x300?text=My+Recipe',
+                'strTags' => null,
+                'strYoutube' => null,
+                'strIngredient1' => $ingredientsList[0] ?? '',
+                'strIngredient2' => $ingredientsList[1] ?? '',
+                'strIngredient3' => $ingredientsList[2] ?? '',
+                'strIngredient4' => $ingredientsList[3] ?? '',
+                'strIngredient5' => $ingredientsList[4] ?? '',
+                'strMeasure1' => '',
+                'strMeasure2' => '',
+                'strMeasure3' => '',
+                'strMeasure4' => '',
+                'strMeasure5' => '',
+                'strSource' => null,
+                'is_user_recipe' => true,
+                'user_recipe_id' => $userRecipe->id,
+                'cooking_time' => $userRecipe->cooking_time,
+            ];
+        });
+
+        // Merge API meals with user recipes
+        $allRecipes = $meals->concat($formattedUserRecipes);
+
+        // Filter by ingredients
         if (!empty($requestedIngredients)) {
-            $meals = $meals->filter(function ($meal) use ($requestedIngredients) {
-                $mealIngredients = collect(range(1, 20))
-                    ->map(fn($i) => trim(strtolower($meal->{'strIngredient' . $i})))
-                    ->filter()
-                    ->all();
+            $allRecipes = $allRecipes->filter(function ($meal) use ($requestedIngredients) {
+                if (property_exists($meal, 'is_user_recipe') && $meal->is_user_recipe) {
+                    $mealIngredients = [];
+                    for ($i = 1; $i <= 20; $i++) {
+                        $ingredient = property_exists($meal, 'strIngredient' . $i) 
+                            ? strtolower($meal->{'strIngredient' . $i}) 
+                            : '';
+                        if (!empty($ingredient)) {
+                            $mealIngredients[] = $ingredient;
+                        }
+                    }
+                } else {
+                    $mealIngredients = collect(range(1, 20))
+                        ->map(fn($i) => trim(strtolower($meal->{'strIngredient' . $i})))
+                        ->filter()
+                        ->all();
+                }
 
                 foreach ($requestedIngredients as $requested) {
-                    if (!collect($mealIngredients)->contains(fn($ingredient) => str_contains($ingredient, $requested))) {
+                    $found = false;
+                    foreach ($mealIngredients as $mealIngredient) {
+                        if (str_contains($mealIngredient, $requested)) {
+                            $found = true;
+                            break;
+                        }
+                    }
+                    if (!$found) {
                         return false;
                     }
                 }
-
                 return true;
             })->values();
         }
 
+        // Filter by cooking time
+        if (!empty($maxTime)) {
+            $allRecipes = $allRecipes->filter(function ($meal) use ($maxTime) {
+                $cookingTime = $meal->cooking_time ?? null;
+                if ($cookingTime === null) {
+                    return true;
+                }
+                return $cookingTime <= intval($maxTime);
+            })->values();
+        }
+
+        // Calculate AI match percentages
+        foreach ($allRecipes as $meal) {
+            if (property_exists($meal, 'is_user_recipe') && $meal->is_user_recipe) {
+                $mealIngredients = [];
+                for ($i = 1; $i <= 20; $i++) {
+                    $ingredient = property_exists($meal, 'strIngredient' . $i) 
+                        ? strtolower($meal->{'strIngredient' . $i}) 
+                        : '';
+                    if (!empty($ingredient)) {
+                        $mealIngredients[] = $ingredient;
+                    }
+                }
+            } else {
+                $mealIngredients = collect(range(1, 20))
+                    ->map(fn($i) => trim(strtolower($meal->{'strIngredient' . $i})))
+                    ->filter()
+                    ->values()
+                    ->all();
+            }
+            
+            if (empty($requestedIngredients)) {
+                $meal->missing_percentage = 100;
+                $meal->missing_count = count($mealIngredients);
+                $meal->matched_percentage = 0;
+            } else {
+                $matchedCount = 0;
+                foreach ($mealIngredients as $mealIngredient) {
+                    foreach ($requestedIngredients as $userIngredient) {
+                        if (str_contains($mealIngredient, $userIngredient)) {
+                            $matchedCount++;
+                            break;
+                        }
+                    }
+                }
+                
+                $totalIngredients = count($mealIngredients);
+                $percentage = $totalIngredients > 0 ? ($matchedCount / $totalIngredients) * 100 : 0;
+                
+                $meal->missing_percentage = round(100 - $percentage, 1);
+                $meal->missing_count = $totalIngredients - $matchedCount;
+                $meal->matched_percentage = round($percentage, 1);
+            }
+        }
+
         return view('recipes', [
-            'meals' => $meals,
+            'meals' => $allRecipes,
             'searchIngredients' => $ingredientsInput,
             'requestedIngredients' => $requestedIngredients,
         ]);
@@ -93,6 +199,46 @@ class MealController extends Controller
 
     public function viewRecipe($id)
     {
+        // Check if it's a user recipe (starts with 'user_')
+        if (str_starts_with($id, 'user_')) {
+            $userRecipeId = str_replace('user_', '', $id);
+            $userRecipe = \App\Models\UserRecipe::where('user_id', auth()->id())
+                                               ->findOrFail($userRecipeId);
+            
+            // Format user recipe for the view
+            $ingredientsList = is_array($userRecipe->ingredients) 
+                ? $userRecipe->ingredients 
+                : json_decode($userRecipe->ingredients, true);
+            $measuresList = is_array($userRecipe->measures) 
+                ? $userRecipe->measures 
+                : json_decode($userRecipe->measures, true);
+            
+            $ingredients = [];
+            foreach ($ingredientsList as $index => $ingredient) {
+                $ingredients[] = [
+                    'name' => $ingredient,
+                    'measure' => $measuresList[$index] ?? ''
+                ];
+            }
+            
+            $meal = (object)[
+                'id' => 'user_' . $userRecipe->id,
+                'strMeal' => $userRecipe->title,
+                'strCategory' => $userRecipe->category,
+                'strArea' => 'Your Recipe',
+                'strInstructions' => $userRecipe->instructions,
+                'strMealThumb' => $userRecipe->image ?? 'https://via.placeholder.com/400x400?text=My+Recipe',
+                'strYoutube' => null,
+                'strSource' => null,
+                'strTags' => null,
+                'is_user_recipe' => true,
+                'cooking_time' => $userRecipe->cooking_time,
+            ];
+            
+            return view('recipe', ['meal' => $meal, 'ingredients' => $ingredients]);
+        }
+        
+        // Original code for API recipes
         $meal = Meal::find($id);
         
         if (!$meal) {
@@ -116,45 +262,47 @@ class MealController extends Controller
         return view('recipe', ['meal' => $meal, 'ingredients' => $ingredients]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function getMissingIngredients($meal, $userIngredients)
+    {
+        $mealIngredients = collect(range(1, 20))
+            ->map(fn($i) => trim(strtolower($meal->{'strIngredient' . $i})))
+            ->filter()
+            ->values()
+            ->all();
+        
+        $missing = array_diff($mealIngredients, $userIngredients);
+        
+        $totalIngredients = count($mealIngredients);
+        $matchedIngredients = $totalIngredients - count($missing);
+        $percentage = ($matchedIngredients / $totalIngredients) * 100;
+        
+        return [
+            'missing' => $missing,
+            'percentage' => round($percentage, 1),
+            'hasEnough' => $percentage >= 50
+        ];
+    }
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
- 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Meal $meal)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Meal $meal)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Meal $meal)
     {
         //

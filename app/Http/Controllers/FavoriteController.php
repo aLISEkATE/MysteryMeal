@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Favorite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
@@ -12,7 +13,10 @@ class FavoriteController extends Controller
      */
     public function index()
     {
-        //
+        $favorites = Favorite::where('user_id', Auth::id())
+                            ->with('meal')
+                            ->get();
+        return view('favorites.index', compact('favorites'));
     }
 
     /**
@@ -26,9 +30,14 @@ class FavoriteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $mealId)
     {
-        //
+        $favorite = Favorite::firstOrCreate([
+            'user_id' => Auth::id(),
+            'meal_id' => $mealId
+        ]);
+        
+        return back()->with('success', 'Added to favorites!');
     }
 
     /**
@@ -58,8 +67,12 @@ class FavoriteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Favorite $favorite)
+    public function destroy($mealId)
     {
-        //
+        Favorite::where('user_id', Auth::id())
+                ->where('meal_id', $mealId)
+                ->delete();
+        
+        return back()->with('success', 'Removed from favorites!');
     }
 }

@@ -1,4 +1,4 @@
-<x-app-layout>
+﻿<x-app-layout>
     <x-slot name="header">
         <h2 class="dashboard-title">
             {{ data_get($meal, 'strMeal') }}
@@ -20,25 +20,36 @@
             box-shadow: 0 24px 48px rgba(0,0,0,0.08);
         }
         .recipe-content {
-            display: grid;
-            grid-template-columns: minmax(280px, 1fr) minmax(360px, 1.4fr);
+            display: flex;
+            flex-direction: column;
             gap: 28px;
-            align-items: start;
             padding: 32px;
         }
         .recipe-image {
-            min-width: 0;
-            border-radius: 20px;
-            overflow: hidden;
+                width: 50%;
+                aspect-ratio: 1 / 1;
+                border-radius: 20px;
+                overflow: hidden;
+                background: #f8fafc;
+                align-self: anchor-center;
         }
         .recipe-image img {
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: cover;
             display: block;
         }
         .recipe-body {
             min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: auto;
         }
         .recipe-meta {
             display: flex;
@@ -70,12 +81,6 @@
             padding: 12px 15px;
             border-bottom: 1px solid #ffd6a5;
         }
-        .links {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
         .extra {
             margin-top: 20px;
             padding-top: 20px;
@@ -102,14 +107,14 @@
 
     <div class="page recipe-page">
         <div class="recipe-card">
-            <div class="recipe-content">
+            <div class="recipe-content" style="display:flex; flex-direction:column; gap:28px; padding:32px;">
                 @if(data_get($meal, 'strMealThumb'))
                     <div class="recipe-image">
                         <img src="{{ data_get($meal, 'strMealThumb') }}" alt="{{ data_get($meal, 'strMeal') }}">
                     </div>
                 @endif
 
-                <div class="recipe-body">
+                <div class="recipe-body" style="display:flex; flex-direction:column; gap:18px; flex:1; min-height:0;">
 
                 <!-- Recipe Meta Info -->
                 <div class="meta recipe-meta">
@@ -183,7 +188,7 @@
                 @endif
 
                 <!-- Links -->
-                <div class="links" style="display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap;">
+                <div class="links">
                     <a href="{{ route('recipes') }}" class="btn" style="padding: 10px 20px;">
                         ← Back to Recipes
                     </a>
@@ -211,6 +216,7 @@
                     @endif
                 </div>
 
+                </div>
             </div>
         </div>
     </div>
