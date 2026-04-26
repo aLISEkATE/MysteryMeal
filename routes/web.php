@@ -10,6 +10,7 @@ Route::get('/', function () {
 });
 
 Route::get('/recipes', [MealController::class, 'recipes'])->name('recipes');
+Route::get('/recipe/api/{id}', [MealController::class, 'viewApiRecipe'])->name('recipe.api.view');
 Route::get('/recipe/{id}', [MealController::class, 'viewRecipe'])->name('recipe.view');
 
 Route::get('/dashboard', function () {
